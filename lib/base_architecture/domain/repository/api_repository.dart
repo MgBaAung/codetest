@@ -4,15 +4,16 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../../core/api_end_point.dart';
 import '../../core/api_response.dart';
 import '../../core/master_object.dart';
 import '../../data/network_datasource/network_client.dart';
 
 class ApiRepository<T extends MasterObject<T>> {
   final NetworkClient networkClient;
+  final String baseUrl;
 
-  ApiRepository({required this.networkClient});
+  ApiRepository({required this.networkClient, String? baseUrl})
+    : baseUrl = baseUrl ?? const String.fromEnvironment('API_BASE_URL');
 
   ApiResponse<R> handleResponse<R>(
     http.Response response,

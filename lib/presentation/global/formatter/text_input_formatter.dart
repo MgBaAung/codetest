@@ -34,7 +34,9 @@ class ThousandsFormatter extends TextInputFormatter {
 
     String newText = newValue.text.replaceAll(',', '');
 
-    if (double.tryParse(newText) != null) {
+    // This formatter is for whole-number amounts. Checking with double.parse
+    // and then calling int.parse allowed decimals through and threw at runtime.
+    if (RegExp(r'^\d+$').hasMatch(newText)) {
       final formatter = NumberFormat("#,###");
       final formattedText = formatter.format(int.parse(newText));
 

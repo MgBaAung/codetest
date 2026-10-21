@@ -12,11 +12,11 @@ class PhNoFormatter extends TextInputFormatter {
     } else {
       input = input.replaceAll(RegExp(r'\D'), '');
     }
-    final allowedPrefixes = ['', '0', '09', '+', '+9', '+95', '+959'];
+    final allowedPrefixes = ['0', '09', '+', '+9', '+95', '+959'];
 
-    final isTypingAllowed = allowedPrefixes.any(
-      (prefix) => input.startsWith(prefix),
-    );
+    final isTypingAllowed =
+        input.isEmpty ||
+        allowedPrefixes.any((prefix) => input.startsWith(prefix));
 
     if (!isTypingAllowed) {
       return oldValue;
