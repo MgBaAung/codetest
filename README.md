@@ -1,4 +1,4 @@
-# B2B Freshmore
+# Code test
 
 B2B Freshmore is a Flutter mobile application for a business-to-business fresh produce ordering workflow. The source is organized into presentation, state management, domain, and data layers.
 
